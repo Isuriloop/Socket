@@ -27,12 +27,12 @@ var PORT = "5001"
 var ser = net.createServer(function(so){
     so.on('data', function(data){
         console.log('Usuario Nuevo')
-        so.write("servidor1")
+        
     })
 
     so.on('data', function(data){
   
-       
+        so.write("servidor1")
          console.log(data.toString('utf-8'))
 
         
