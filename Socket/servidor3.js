@@ -1,42 +1,30 @@
+import { StringDecoder } from 'string_decoder';
+
 var express = require('express')
 var aplicacion = express()
-var ipdinamic
-const net = require('net') 
-const os = require('os')
-var interface = os.networkInterfaces()
+
+
+const net = require('net') //Se instalo
 const server = require('http').Server(aplicacion) // Es lo que instalamos, y va a funcionar como servidor
 const socket = require('socket.io')(server)
+const {StringDecoder}= require('string_decoder')
+const decoder = new StringDecoder('utf-8')
 
-// for(var k in interface){
-//     for(var k2 in interface[k]){
-
-//         var address=interface[k][k2];
-//         if(address.family=="IPv4", !address.internal){
-//             ipdinamic =address.address.toString();
-            
-//             console.log(ipdinamic)
-            
-//         }
-//     }
-// }
-
-var HOST = "alfredosolis173239.ddns.net"
-var PORT = "5003"
+//Este serán las direcciones
+var HOST = "alfredosolis173239.ddns.net"  //Este mi IP  de la red
+var PORT = " 5003"  // es el puerto
 
 
 var ser = net.createServer(function(so){
     so.on('data', function(data){
-        var date = new Date();
         console.log('Usuario Nuevo')
-        console.log(data.toString('utf-8')+date.toDateString())
-        so.write("servidor3")
-       
+        var cent = data
+        so.write("Conectado a servidor 3" + "\n")
+        console.log(decoder.write(cent));
     })
 
     so.on('data', function(data){
-        so.write("servidor3")
-       
-         console.log(data.toString('utf-8'))
+ 
 
         
     })
@@ -50,5 +38,5 @@ var ser = net.createServer(function(so){
 
 ser.listen(PORT, HOST);
 
-
+console.log('Conexion');
 

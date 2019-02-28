@@ -1,30 +1,30 @@
+
+
 var express = require('express')
 var aplicacion = express()
-var ipdinamic
-const net = require('net') 
-const os = require('os')
-var interface = os.networkInterfaces()
+
+
+const net = require('net') //Se instalo
 const server = require('http').Server(aplicacion) // Es lo que instalamos, y va a funcionar como servidor
 const socket = require('socket.io')(server)
+const {StringDecoder}= require('string_decoder')
+const decoder = new StringDecoder('utf-8')
 
-
-
-var HOST = "alfredosolis173239.ddns.net"
-var PORT = "5001"
+//Este serán las direcciones
+var HOST = "alfredosolis.ddns.net"  //Este mi IP  de la red
+var PORT = " 5001"  // es el puerto
 
 
 var ser = net.createServer(function(so){
     so.on('data', function(data){
-        var date = new Date();
         console.log('Usuario Nuevo')
-        console.log(data.toString('utf-8')+date.toDateString())
-        
+        var cent = data
+        so.write("Conectado a servidor 1"+ "\n")
+      console.log(decoder.write(cent));
     })
 
     so.on('data', function(data){
-  
-        so.write("servidor1")
-         console.log(data.toString('utf-8'))
+ 
 
         
     })
@@ -38,5 +38,5 @@ var ser = net.createServer(function(so){
 
 ser.listen(PORT, HOST);
 
-
+console.log('Conexion');
 
