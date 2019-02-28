@@ -18,7 +18,7 @@ var ser = net.createServer(function(so){
     so.on('data', function(data){
         console.log('Usuario Nuevo')
         var cent = data
-        so.write("Conectado a servidor 2" + "\n")
+        so.write("Conectado a servidor 1" + "\n")
         console.log(decoder.write(cent));
     })
 
