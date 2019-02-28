@@ -1,4 +1,4 @@
-
+﻿
 var express = require('express')
 var aplicacion = express()
 
@@ -11,7 +11,7 @@ const decoder = new StringDecoder('utf-8')
 
 //Este serán las direcciones
 var HOST = "alfredosolis173239.ddns.net"  //Este mi IP  de la red
-var PORT = " 5002"  // es el puerto
+var PORT = " 5001"  // es el puerto
 
 
 var ser = net.createServer(function(so){
